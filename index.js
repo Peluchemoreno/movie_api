@@ -16,11 +16,9 @@ let topMovies = [
   { title: 'author9' },
 ]
 
+//middleware functions
 app.use(morgan('common'));
 app.use(express.static('public'));
-
-
-
 
 //error middleware functions always come last
 app.use((err, req, res, next) => {
