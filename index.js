@@ -20,13 +20,6 @@ let topMovies = [
 app.use(morgan('common'));
 app.use(express.static('public'));
 
-//error middleware functions always come last
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).send('Oops! Something broke :(');
-});
-
-
 
 app.get('/', (req, res) => {
   res.send('<h1>Welcome to my App!</h1><br><p>I hope you like it here</p>');
@@ -39,6 +32,12 @@ app.get('/movies', (req, res) => {
 app.get('/supersecretpage', (req, res) => {
   res.send('You found my secret page!');
 })
+
+//error middleware functions always come last
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Oops! Something broke :(');
+});
 
 app.listen(8080, () => {
   console.log('app running on port 8080 hehe');
