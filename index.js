@@ -1,5 +1,5 @@
 //import express and morgan
-const express = require('express'), morgan = require('morgan');
+const express = require('express'), morgan = require('morgan'), uuid = require('uuid'), bodyParser = require('body-parser');
 const app = express();
 
 
@@ -19,6 +19,7 @@ let topMovies = [
 //middleware functions
 app.use(morgan('common'));
 app.use(express.static('public'));
+
 
 //error middleware functions always come last
 app.use((err, req, res, next) => {

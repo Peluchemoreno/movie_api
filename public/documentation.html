@@ -1,16 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Documentation Page</title>
-  </head>
-  <body>
-    <h1>Welcome to the Documentation Page</h1>
-    <p>
-      This is REST API for an application called “myFlix” that interacts with a
-      database that stores data about different movies.
-    </p>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Documentation Page</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <h1>Welcome to the Documentation Page</h1>
+  <p>
+    This is REST API for an application called “myFlix” that interacts with a
+    database that stores data about different movies.
+  </p><br>
+  <table>
+    <thead>
+      <th>Business Logic</th>
+      <th>URL endpoint</th>
+      <th>HTTP Method</th>
+      <th>Request body data format</th>
+      <th>Response body data format</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Get list of all movies</td>
+        <td>/movies</td>
+        <td>GET</td>
+        <td>None</td>
+        <td>a JSON object containing data about all movies</td>
+      </tr>
+      <tr></tr>
+    </tbody>
+  </table>
+</body>
+
 </html>
