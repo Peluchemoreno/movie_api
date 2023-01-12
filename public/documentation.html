@@ -31,7 +31,84 @@
         <td>None</td>
         <td>a JSON object containing data about all movies</td>
       </tr>
-      <tr></tr>
+      <tr>
+        <td>Get data about a single movie by title</td>
+        <td>/movies/[name]</td>
+        <td>GET</td>
+        <td>None</td>
+        <td>a JSON object containing data about a single movie. Example:<br><br>
+          {<br>
+          &ensp;id: 1,<br>
+          &ensp;name: 'movie_title',<br>
+          &ensp;director: {<br>
+          &emsp;name: 'director',<br>
+          &emsp;bio: 'bio about director',<br>
+          &emsp;birthyear: 1990,<br>
+          &emsp;deathyear: 2022,<br>
+          &ensp;}<br>
+          &ensp;genre: {<br>
+          &emsp;name: 'thriller',<br>
+          &emsp;description: 'genre description',<br>
+          &ensp;}<br>
+          &ensp;description: 'Lorem ipsum',<br>
+          &ensp;imageUrl: 'https://via.placeholder.com/30',<br>
+          &ensp;featured: true<br>
+          }
+        </td>
+      </tr>
+      <tr>
+        <td>Get data about a genre by name</td>
+        <td>/movies/genre/[genre name]</td>
+        <td>GET</td>
+        <td>None</td>
+        <td>a JSON object containing data about a specific genre</td>
+      </tr>
+      <tr>
+        <td>Get data about a specific director of a movie</td>
+        <td>/movies/[name]/director</td>
+        <td>GET</td>
+        <td>None</td>
+        <td>a JSON object with data about a specific director</td>
+      </tr>
+      <tr>
+        <td>Add a user</td>
+        <td>/users</td>
+        <td>POST</td>
+        <td>a JSON object containing data about the user to be added<br><br>
+          Example:<br><br>
+          {<br>
+          &ensp;name: 'Bob',<br>
+          }</td>
+        <td>a JSON object containing the user that was just added</td>
+      </tr>
+      <tr>
+        <td>Update a user's username</td>
+        <td>/users/[id]</td>
+        <td>PUT</td>
+        <td>None</td>
+        <td>A message indicating that the username has been updated</td>
+      </tr>
+      <tr>
+        <td>Add movie to user's list of favorite movies</td>
+        <td>/users/[id]/[movieTitle]</td>
+        <td>PUT</td>
+        <td>None</td>
+        <td>A message confirming that the movie was added to the favorites list</td>
+      </tr>
+      <tr>
+        <td>Removes a movie from the users favorites list</td>
+        <td>/users/[id]/[movieTitle]</td>
+        <td>DELETE</td>
+        <td>None</td>
+        <td>A message indicating that the movie was removed from the user's list</td>
+      </tr>
+      <tr>
+        <td>Removes user's profile</td>
+        <td>/users/[id]</td>
+        <td>DELETE</td>
+        <td>None</td>
+        <td>A message confirming that the user was successfully deleted</td>
+      </tr>
     </tbody>
   </table>
 </body>
