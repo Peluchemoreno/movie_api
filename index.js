@@ -67,8 +67,8 @@ app.get('/users', (req, res) => {
 //returns data about a genre
 app.get('/movies/genre/:genreName/', (req, res) => {
   let { genreName } = req.params;
-  let genre = topMovies.find(x => {
-    return x.genre.name === genreName;
+  let genre = topMovies.find(movie => {
+    return movie.genre.name === genreName;
   }).genre;
 
   if (genre) {
@@ -81,8 +81,8 @@ app.get('/movies/genre/:genreName/', (req, res) => {
 //return data about a single movie
 app.get('/movies/:title', (req, res) => {
   let { title } = req.params;
-  let movie = topMovies.find(x => {
-    return x.title === title;
+  let movie = topMovies.find(movie => {
+    return movie.title === title;
   });
 
   if (movie) {
@@ -126,8 +126,8 @@ app.put('/users/:id', (req, res) => {
 
   const updatedUserName = req.body.name;
 
-  let user = users.find(x => {
-    return x.id == id;
+  let user = users.find(user => {
+    return user.id == id;
   })
 
   if (user) {
@@ -143,8 +143,8 @@ app.put('/users/:id', (req, res) => {
 app.put('/users/:id/:movieTitle', (req, res) => {
   const { id, movieTitle } = req.params;
 
-  let user = users.find(x => {
-    return x.id == id;
+  let user = users.find(user => {
+    return user.id == id;
   });
 
   if (user) {
@@ -160,8 +160,8 @@ app.put('/users/:id/:movieTitle', (req, res) => {
 app.delete('/users/:id/:movieTitle', (req, res) => {
   const { id, movieTitle } = req.params;
 
-  let user = users.find(x => {
-    return x.id == id;
+  let user = users.find(user => {
+    return user.id == id;
   });
 
   if (user) {
@@ -176,12 +176,12 @@ app.delete('/users/:id/:movieTitle', (req, res) => {
 app.delete('/users/:id/', (req, res) => {
   const { id } = req.params;
 
-  let user = users.find(x => {
-    return x.id == id;
+  let user = users.find(user => {
+    return user.id == id;
   });
 
   if (user) {
-    users = users.filter(x => x.id != id);
+    users = users.filter(user => user.id != id);
     res.status(200).send(`Removed user with id:${user.id}`);
   } else {
     res.status(400).send('cant find this user');
