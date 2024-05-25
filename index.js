@@ -1,5 +1,7 @@
 //import express and morgan
 const express = require('express'), morgan = require('morgan'), uuid = require('uuid'), bodyParser = require('body-parser');
+const Movie = require('./movie')
+const User = require('./user')
 const app = express();
 
 
@@ -19,14 +21,12 @@ let users = [
   }
 ]
 
-let topMovies = [
-
-
-
-
-
-
-]
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', "*");
+  res.header('Access-Control-Allow-Methods', "GET, POST, PUT, PATCH, DELETE, HEAD, OPTIONS");
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next()
+})
 
 //middleware functions
 app.use(morgan('common'));
@@ -40,12 +40,62 @@ app.get('/', (req, res) => {
 
 //returns a list of all movies
 app.get('/movies', (req, res) => {
-  res.status(200).json(topMovies);
+  Movie.find({}).then(data => {
+    res.send(data)
+  })
 })
+
+//add a Single Movie
+app.post('/movies', (req, res)=>{
+
+  const {title, director, rating, genre, image} = req.body
+
+  new Movie({
+    title,
+    director,
+    rating,
+    genre,
+    image,
+  }).save().then(data => {
+    res.send(data)
+  })
+})
+
+// update a movie's image
+app.put('/movies/:movieId', (req, res)=>{
+  Movie.findOneAndUpdate({
+    _id: req.params.movieId
+  }, {$set: {image: req.body.image}}).then((data)=>{
+      res.send(data)
+  })
+})
+
+//return a single movie
+app.get('/movies/:movieId', (req, res)=>{
+
+  const {id} = req.params
+  Movie.find({
+    _id: id
+  }).then(data => {
+    res.send(data)
+  })
+})
+
+//delete a movie
+app.delete('/movies/:movieId' , (req, res)=>{
+  Movie.findOneAndDelete({
+    _id: req.params.movieId
+  }).then(data => {
+    res.send(data)
+  })
+})
+
 
 //returns a list of all users
 app.get('/users', (req, res) => {
-  res.status(200).json(users);
+  User.find({}).then(data => {
+    res.send(data)
+  })
 })
 
 //returns data about a genre
